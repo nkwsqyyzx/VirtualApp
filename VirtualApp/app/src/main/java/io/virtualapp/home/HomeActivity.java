@@ -82,6 +82,11 @@ public class HomeActivity extends VActivity implements HomeContract.HomeView {
 			mPresenter.deleteApp(model);
 		});
 		mPagerView.setOnItemClickListener((item, pos) -> {
+			String[] users = getUsers();
+			if (users.length == 1) {
+				mPresenter.launchApp((AppModel) item, 0);
+				return;
+			}
 
 			new AlertDialog.Builder(this)
 					.setTitle("Choose an User")

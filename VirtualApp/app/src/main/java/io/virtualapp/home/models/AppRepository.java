@@ -40,6 +40,7 @@ public class AppRepository implements AppDataSource {
 		sdCardScanPaths.add(sdCardPath + File.separator + "pp/downloader");
 		sdCardScanPaths.add(sdCardPath + File.separator + "pp/downloader/apk");
 		sdCardScanPaths.add(sdCardPath + File.separator + "pp/downloader/silent/apk");
+		sdCardScanPaths.add(sdCardPath + File.separator + "apps");
 	}
 
 	private Context mContext;
@@ -115,9 +116,6 @@ public class AppRepository implements AppDataSource {
 				continue;
 			}
 			if (isSystemApplication(pkg)) {
-				continue;
-			}
-			if (VirtualCore.get().isAppInstalled(pkg.packageName)) {
 				continue;
 			}
 			AppModel model = new AppModel(context, pkg);
